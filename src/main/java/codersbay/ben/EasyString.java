@@ -6,21 +6,19 @@ import java.util.List;
 public class EasyString {
 
     private List<Character> characterList;
+    private List<Integer> indexList;
+
 
     public EasyString() {
         characterList = new ArrayList<>();
+        indexList = new ArrayList<>();
+
     }
 
     public EasyString(String toAdd) {
         characterList = new ArrayList<>();
+        indexList = new ArrayList<>();
         this.add(toAdd);
-    }
-
-    public EasyString(String toAdd, boolean trimFrontBack) {
-        characterList = new ArrayList<>();
-        this.add(toAdd);
-        this.trimFront();
-        this.trimBack();
     }
 
 
@@ -41,7 +39,6 @@ public class EasyString {
 
     // DONE
     public void remove(int length) {
-        //shorten the element for the number in the parameter
         int listSize = this.getCharacterList().size();
         if (listSize >= length) {
             for (int i = 0; i < length; i++) {
@@ -50,30 +47,59 @@ public class EasyString {
         }
     }
 
-
+    // DONE
     public void trimFront() {
-        //remove all blank spaces located before the characters
-
+        for (int i = 0; i < getCharacterList().size(); i++) {
+            if (characterList.get(0).equals(' ')) {
+                characterList.remove(0);
+            } else {
+                break;
+            }
+        }
     }
 
-
+    // DONE
     public void trimBack() {
-        //remove all blank spaces located behind the characters
+        for (int i = characterList.size() - 1; i > 0; i--) {
+            if (characterList.get(characterList.size() - 1).equals(' ')) {
+                characterList.remove(characterList.size() - 1);
+            } else {
+                break;
+            }
+        }
     }
 
+    // DONE
+    /*
+    public void trimMiddle() {
+        for (int i = 0; i < getCharacterList().size(); i++){
+            if(characterList.get(i).equals(' ') && i > 0 && i < (getCharacterList().size() - 1)){
+                getCharacterList().remove(i);
+            }
+        }
+    }
+
+     */
 
     public void trimMiddle() {
-        //remove all blank spaces that are not located before or behind the characters
+        for (int i = 0; i < getCharacterList().size(); i++) {
+            if (!characterList.get(i).equals(' ')) {
+                indexList.add(i);
+                break;
+            }
+        }
     }
 
 
     // DONE
     @Override
     public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
         String temp = "";
         for (Character c : characterList) {
             temp += c.toString();
         }
+        temp += "";
         return temp;
     }
 
@@ -84,5 +110,13 @@ public class EasyString {
 
     public void setCharacterList(List<Character> characterList) {
         this.characterList = characterList;
+    }
+
+    public List<Integer> getIndexList() {
+        return indexList;
+    }
+
+    public void setIndexList(List<Integer> indexList) {
+        this.indexList = indexList;
     }
 }
