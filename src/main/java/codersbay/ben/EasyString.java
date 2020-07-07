@@ -82,10 +82,40 @@ public class EasyString {
      */
 
     public void trimMiddle() {
-        for (int i = 0; i < getCharacterList().size(); i++) {
+        // find first letter
+        for (int i = 0; i < characterList.size(); i++) {
             if (!characterList.get(i).equals(' ')) {
                 indexList.add(i);
                 break;
+            }
+        }
+
+        // find last letter
+        for (int i = characterList.size() - 1; i > 0; i--) {
+            if (!characterList.get(i).equals(' ')) {
+                indexList.add(i);
+                break;
+            }
+        }
+
+        /*
+        // STATUS: Programm kann feststellen, wann innerhalb des Strings der erste und der letzte Blank Space ist
+        // DEBUGGING
+        for (Integer i : indexList) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        */
+
+        int counterBegin = indexList.get(0);
+        int counterEnd = indexList.get(1);
+        int deletedBlanks = 0;
+
+        for (int i = counterBegin; i < counterEnd - deletedBlanks; i++) {
+            if (characterList.get(i).equals(' ')) {
+                characterList.remove(i);
+                deletedBlanks++;
+                i--;
             }
         }
     }
@@ -94,13 +124,14 @@ public class EasyString {
     // DONE
     @Override
     public String toString() {
+
         StringBuilder stringBuilder = new StringBuilder();
-        String temp = "";
+
         for (Character c : characterList) {
-            temp += c.toString();
+            stringBuilder.append(c.toString());
         }
-        temp += "";
-        return temp;
+
+        return stringBuilder.toString();
     }
 
 

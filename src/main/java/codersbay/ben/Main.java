@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*
+
         System.out.println();
         System.out.println();
 
@@ -44,7 +44,6 @@ public class Main {
         System.out.println("length: " + easyString4.length() + " characters");
         easyString3.trimFront();
         System.out.println(easyString4.toString());
-        */
 
 
         EasyString easyString5 = new EasyString(" Good smells smell good ");
@@ -54,21 +53,12 @@ public class Main {
         easyString5.trimFront();
         System.out.println(easyString5.toString());
 
+
         System.out.println();
         System.out.println();
 
 
-        EasyString easyString6 = new EasyString(" Hallo Welt          ");
-        System.out.println(easyString6.toString());
-        System.out.println(easyString6.length());
-        //easyString6.remove(6);
-        //System.out.println(easyString6.toString());
-        //System.out.println(easyString6.length());
-        //easyString6.trimFront();
-        //System.out.println(easyString6.toString());
-        //System.out.println(easyString6.length());
-        //easyString6.trimFront();
-        //easyString6.trimBack();
+        EasyString easyString6 = new EasyString("        Hallo        du        schöne          Welt         ");
         easyString6.trimMiddle();
         System.out.println();
         System.out.println(easyString6.toString());
