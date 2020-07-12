@@ -46,6 +46,7 @@ public class Main {
         System.out.println(easyString4.toString());
 
 
+        System.out.println("TODO: Add text, remove characters, trim front, show length");
         EasyString easyString5 = new EasyString(" Good smells smell good ");
         easyString5.remove(5);
         System.out.println(easyString5.toString());
@@ -58,6 +59,7 @@ public class Main {
         System.out.println();
 
 
+        System.out.println("TODO: Add text, remove characters, trim front, show length");
         EasyString easyString6 = new EasyString("        Hallo        du        schöne          Welt         ");
         easyString6.trimMiddle();
         System.out.println();

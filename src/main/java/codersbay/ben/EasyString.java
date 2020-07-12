@@ -38,12 +38,14 @@ public class EasyString {
 
 
     // DONE
-    public void remove(int length) {
+    public void remove(int length) throws IllegalArgumentException {
         int listSize = this.getCharacterList().size();
         if (listSize >= length) {
             for (int i = 0; i < length; i++) {
                 this.getCharacterList().remove(listSize - 1 - i);
             }
+        } else {
+            throw new IllegalArgumentException("You want to delete more characters than are contained in the list!");
         }
     }
 
@@ -70,19 +72,8 @@ public class EasyString {
     }
 
     // DONE
-    /*
     public void trimMiddle() {
-        for (int i = 0; i < getCharacterList().size(); i++){
-            if(characterList.get(i).equals(' ') && i > 0 && i < (getCharacterList().size() - 1)){
-                getCharacterList().remove(i);
-            }
-        }
-    }
-
-     */
-
-    public void trimMiddle() {
-        // find first letter
+        // TODO find first letter
         for (int i = 0; i < characterList.size(); i++) {
             if (!characterList.get(i).equals(' ')) {
                 indexList.add(i);
@@ -90,7 +81,7 @@ public class EasyString {
             }
         }
 
-        // find last letter
+        // TODO find last letter
         for (int i = characterList.size() - 1; i > 0; i--) {
             if (!characterList.get(i).equals(' ')) {
                 indexList.add(i);
@@ -98,15 +89,7 @@ public class EasyString {
             }
         }
 
-        /*
-        // STATUS: Programm kann feststellen, wann innerhalb des Strings der erste und der letzte Blank Space ist
-        // DEBUGGING
-        for (Integer i : indexList) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-        */
-
+        // TODO delete blank spaces between first letter and last letter
         int counterBegin = indexList.get(0);
         int counterEnd = indexList.get(1);
         int deletedBlanks = 0;
@@ -128,7 +111,7 @@ public class EasyString {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (Character c : characterList) {
-            stringBuilder.append(c.toString());
+            stringBuilder.append(c);
         }
 
         return stringBuilder.toString();
