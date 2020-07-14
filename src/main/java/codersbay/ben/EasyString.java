@@ -6,18 +6,14 @@ import java.util.List;
 public class EasyString {
 
     private List<Character> characterList;
-    private List<Integer> indexList;
-
 
     public EasyString() {
         characterList = new ArrayList<>();
-        indexList = new ArrayList<>();
 
     }
 
     public EasyString(String toAdd) {
         characterList = new ArrayList<>();
-        indexList = new ArrayList<>();
         this.add(toAdd);
     }
 
@@ -73,10 +69,13 @@ public class EasyString {
 
     // DONE
     public void trimMiddle() {
+        int firstLetter = 0;
+        int lastLetter = 0;
+
         // TODO find first letter
         for (int i = 0; i < characterList.size(); i++) {
             if (!characterList.get(i).equals(' ')) {
-                indexList.add(i);
+                firstLetter = i;
                 break;
             }
         }
@@ -84,17 +83,14 @@ public class EasyString {
         // TODO find last letter
         for (int i = characterList.size() - 1; i > 0; i--) {
             if (!characterList.get(i).equals(' ')) {
-                indexList.add(i);
+                lastLetter = i;
                 break;
             }
         }
 
         // TODO delete blank spaces between first letter and last letter
-        int counterBegin = indexList.get(0);
-        int counterEnd = indexList.get(1);
         int deletedBlanks = 0;
-
-        for (int i = counterBegin; i < counterEnd - deletedBlanks; i++) {
+        for (int i = firstLetter; i < lastLetter - deletedBlanks; i++) {
             if (characterList.get(i).equals(' ')) {
                 characterList.remove(i);
                 deletedBlanks++;
@@ -126,11 +122,4 @@ public class EasyString {
         this.characterList = characterList;
     }
 
-    public List<Integer> getIndexList() {
-        return indexList;
-    }
-
-    public void setIndexList(List<Integer> indexList) {
-        this.indexList = indexList;
-    }
 }
